@@ -32,11 +32,30 @@ async function validateUserId(req, res, next) {
 }
 
 function validateUser(req, res, next) {
-  // DO YOUR MAGIC
+  const { name } = req.body;
+  if (!name || !name.trim()) {
+    return  res.status(400).json({
+      message: 'missing required name field'
+    });
+  } else {
+next();
+req.name = name.trim()
+  }
+  
 }
 
 function validatePost(req, res, next) {
-  // DO YOUR MAGIC
+ 
+  const { text } = req.body;
+  if (!text || !text.trim()) {
+    return  res.status(400).json({
+      message: 'missing required text field'
+    });
+  } else {
+next();
+req.text = text.trim()
+  }
+  
 }
 
 // do not forget to expose these functions to other modules
